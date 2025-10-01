@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Courier New', monospace;
   background-color: #111827;
@@ -59,7 +63,6 @@ body {
     rgba(16, 185, 129, 0.05) 50%,
     transparent 100%
   );
-  /*animation: pulse 4s infinite;*/
 }
 
 .matrix-line {
@@ -69,7 +72,6 @@ body {
   height: 100%;
   background-color: #10b981;
   opacity: 0.1;
-  /*animation: pulse 3s infinite;*/
 }
 
 /* Navigation */
@@ -79,7 +81,7 @@ body {
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: rgba(17, 24, 39, 0.9);
+  background-color: rgba(17, 24, 39, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(16, 185, 129, 0.3);
 }
@@ -116,6 +118,23 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #10b981;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
 }
 
 .nav-link:hover,
@@ -136,6 +155,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 2rem 1.5rem;
+  scroll-margin-top: 80px;
 }
 
 .section-title {
@@ -144,6 +164,7 @@ body {
   text-align: center;
   margin-bottom: 4rem;
   color: #10b981;
+  animation: fadeIn 1s ease-out;
 }
 
 .Myname {
@@ -152,12 +173,12 @@ body {
   padding-left: 70px;
   font-weight: bold;
   color: #10b981;
+  animation: slideInLeft 1s ease-out;
 }
 
 /* Hero Section */
 .hero-section {
   text-align: center;
-  margin-top: -70px;
 }
 
 .hero-container {
@@ -169,6 +190,8 @@ body {
   margin-bottom: 2rem;
   color: #10b981;
   animation: pulse 2s infinite;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-title {
@@ -199,6 +222,7 @@ body {
   margin-bottom: 2rem;
   line-height: 1.6;
   font-weight: normal;
+  animation: slideUp 1s ease-out 0.5s both;
 }
 
 .hero-buttons {
@@ -206,6 +230,7 @@ body {
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+  animation: slideUp 1s ease-out 0.7s both;
 }
 
 .btn {
@@ -248,7 +273,6 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
-  margin-top: -100px;
 }
 
 .skills-grid {
@@ -260,6 +284,7 @@ body {
 
 .skill-item {
   margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .skill-header {
@@ -289,7 +314,7 @@ body {
   background-color: #10b981;
   border-radius: 0.25rem;
   transition: width 1s ease-out;
-  animation: progressFill 1s ease-out;
+  animation: progressFill 1.5s ease-out;
 }
 
 .skills-icons {
@@ -301,6 +326,10 @@ body {
 
 .skill-icon {
   color: #10b981;
+  animation: fadeInUp 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .skill-icon p {
@@ -313,7 +342,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  margin-top: -150px;
 }
 
 .projects-grid {
@@ -329,11 +357,13 @@ body {
   padding: 1.5rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .project-card:hover {
   border-color: rgba(16, 185, 129, 0.6);
   transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
 }
 
 .project-title {
@@ -363,6 +393,12 @@ body {
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background-color: rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
 }
 
 .project-links {
@@ -378,6 +414,7 @@ body {
 
 .project-link:hover {
   color: #10b981;
+  transform: scale(1.2);
 }
 
 /* Contact Section */
@@ -386,7 +423,6 @@ body {
   margin: 0 auto;
   text-align: center;
   width: 100%;
-  margin-top: -120px;
 }
 
 .contact-description {
@@ -395,6 +431,7 @@ body {
   font-size: 1.125rem;
   line-height: 1.6;
   font-weight: normal;
+  animation: fadeIn 1s ease-out;
 }
 
 .contact-grid {
@@ -416,11 +453,13 @@ body {
   text-decoration: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .contact-card:hover {
   border-color: rgba(16, 185, 129, 0.6);
   transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
 }
 
 .contact-card span {
@@ -430,6 +469,7 @@ body {
 
 .contact-footer {
   color: #9ca3af;
+  animation: fadeIn 1s ease-out 0.5s both;
 }
 
 .contact-tagline {
@@ -459,6 +499,17 @@ body {
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -467,6 +518,17 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -498,8 +560,17 @@ body {
     font-size: 1.25rem;
   }
   
+  .hero-description {
+    font-size: 1.125rem;
+  }
+  
   .section-title {
     font-size: 2rem;
+  }
+  
+  .Myname {
+    font-size: 1.25rem;
+    padding-left: 30px;
   }
   
   .nav-menu {
@@ -560,5 +631,10 @@ body {
   
   .section-title {
     font-size: 1.5rem;
+  }
+  
+  .Myname {
+    font-size: 1rem;
+    padding-left: 20px;
   }
 }
